@@ -79,6 +79,7 @@ public class PlayerProtection implements Listener {
     public void playerQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
         event.quitMessage(Component.text(""));
+
         WorldProtectionCom.removeWorldProtection(player);
     }
 
