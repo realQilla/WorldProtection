@@ -36,7 +36,7 @@ public final class WorldProtection extends JavaPlugin {
     private void registerCommands() {
         this.manager.registerEventHandler(LifecycleEvents.COMMANDS, event -> {
             final Commands commands = event.registrar();
-            new WorldProtectionCom().register(commands);
+            new WorldProtectionCom(commands).register();
         });
     }
 

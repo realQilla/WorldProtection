@@ -19,12 +19,20 @@ public final class WorldProtectionCom {
 
     private static final Set<UUID> worldProtectionMap = new HashSet<>();
 
+    private final String argCommand = "worldproection";
+    private final Collection<String> alias = List.of("wp");
+
+    private final Commands commands;
     private final String argPlayer = "player";
     private final String argType = "type";
 
-    public void register(Commands commands) {
+    public WorldProtectionCom(Commands commands) {
+        this.commands = commands;
+    }
+
+    public void register() {
         final LiteralArgumentBuilder<CommandSourceStack> commandNode = Commands
-                .literal("worldprotection")
+                .literal(argCommand)
                 .requires(source -> source.getSender() instanceof Player && source.getSender().hasPermission("worldprotection.toggle"))
                 .executes(this::setSelf);
 
@@ -55,7 +63,7 @@ public final class WorldProtectionCom {
         playerNode.then(typeNode);
         commandNode.then(playerNode);
 
-        commands.register(commandNode.build(), List.of("wp"));
+        this.commands.register(commandNode.build(), alias);
     }
 
     private int usage(final CommandContext<CommandSourceStack> context) {

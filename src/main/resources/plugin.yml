@@ -3,8 +3,3 @@ version: ${projectVersion}
 main: net.qilla.worldprotection.WorldProtection
 api-version: '1.20'
 load: STARTUP
-commands:
-  plugins:
-    description: Returns the server's current plugin list.
-    usage: /plugins
-    aliases: [pl]
